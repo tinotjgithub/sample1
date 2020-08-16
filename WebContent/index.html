@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html><head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<form method="post">
+First name:<br>
+<input type="text" name="first_name" id="first_name">
+<br>
+Last name:<br>
+<input type="text" name="last_name" id="last_name">
+<br>
+City name:<br>
+<input type="text" name="city_name" id="city_name">
+<br>
+Email Id:<br>
+<input type="email" name="email" id="email">
+<br><br>
+<input type="submit" value="submit" id="save_data" class="btn btn-primary">
+<input type="button" value="View" id="View_data" class="btn btn-success">
+</form>
+ 
+    <script>
+    $(document).ready(function() {
+$("#save_data").click(function() {
+	var firstname=$('#first_name').val();  
+	 if(firstname == ""){
+		 alert("enter name");
+	 }
+	 else{
+$.ajax({
+url: "save.jsp",
+type: "post",
+data: {
+	fname:$('#first_name').val(),
+	lname:$('#last_name').val(),
+	city_name:$('#city_name').val(),
+	email:$('#email').val(),
+success : function(data){
+alert("success");
+}
+}
+});
+}
+});
+
+});
+    $("#View_data").click(function() {
+    	debugger;
+    	 window.location="viewDetails.jsp";
+    });
+</script>
+    
+    
+    
+</body>
+</html>
